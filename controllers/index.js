@@ -36,7 +36,7 @@ exports.postLogin = (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  User.find({ email: email })
+  User.findOne({ email: username })
     .then((user) => {
       if (!user) {
         return res.render("index/login");
@@ -45,6 +45,7 @@ exports.postLogin = (req, res, next) => {
       bcrypt
         .compare(password, user.password)
         .then((doMatch) => {
+          console.log("matched");
           if (doMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
@@ -63,4 +64,46 @@ exports.postLogin = (req, res, next) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+exports.getSignup = (req, res, next) => {
+  res.render("index/signup");
+};
+
+exports.postSignup = (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  bcrypt
+    .hash(password, 12)
+    .then((hashedPassword) => {
+      const user = new User({
+        email: username,
+        password: hashedPassword,
+        cart: { items: [] },
+      });
+      console.log("reached here");
+      return user.save();
+    })
+    .then((result) => {
+      res.redirect("/login");
+      // return transporter.sendMail({
+      //   to: email,
+      //   from: 'shop@node-complete.com',
+      //   subject: 'Signup succeeded!',
+      //   html: '<h1>You successfully signed up!</h1>'
+      // });
+    })
+    .catch((err) => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+};
+
+exports.postLogout = (req, res, next) => {
+  req.session.destroy((err) => {
+    console.log(err);
+    res.redirect("/");
+  });
 };

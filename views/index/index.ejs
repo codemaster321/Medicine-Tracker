@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="css/nav.css">
   </head>
   <body>
+    <%- include('navigation.ejs') %>
+
     <% if(prods.length==0) { %>
 
     <h1>Looking for medicines!!! Not found :3</h1>

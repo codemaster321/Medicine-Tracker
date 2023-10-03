@@ -1,0 +1,17 @@
+<div class="topnav">
+    <a class="active" href="/">Home</a>
+
+    <% if(!isAuthenticated) { %>
+    
+
+    <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
+
+    <% } else { %>
+
+    <a href="/form">Add Medicine</a>
+
+    <a href="/logout">Logout</a>
+
+    <% } %>
+  </div>

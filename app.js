@@ -6,6 +6,7 @@ const routes = require("./routes/index");
 const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 const app = express();
 
@@ -61,6 +62,11 @@ app.use(
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/images", express.static(path.join(__dirname, "images")));
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+  next();
+});
 
 app.use(routes);
 
