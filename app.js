@@ -1,13 +1,21 @@
 const express = require("express");
 const multer = require("multer");
-const app = express();
+
 const bodyParser = require("body-parser");
 const routes = require("./routes/index");
 const path = require("path");
 const mongoose = require("mongoose");
+const session = require("express-session");
+
+const app = express();
 
 const MONGODB_URI =
   "mongodb+srv://username:password@cluster0.sbojoze.mongodb.net/shop";
+
+const store = new MongoDBStore({
+  uri: MONGODB_URI,
+  collection: "sessions",
+});
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -31,6 +39,17 @@ const fileFilter = (req, file, cb) => {
 };
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(
+  session({
+    secret: "my secret",
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+  })
+);
+
+app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 

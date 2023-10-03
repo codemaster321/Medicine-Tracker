@@ -3,10 +3,14 @@ const indexController = require("../controllers/index");
 
 const router = express.Router();
 
-router.get("/", indexController.getIndex);
+router.get("/", isAuth, indexController.getIndex);
 
-router.get("/form", indexController.getForm);
+router.get("/form", isAuth.indexController.getForm);
 
-router.post("/form", indexController.postForm);
+router.post("/form", isAuth, indexController.postForm);
+
+router.get("/login", indexController.loginForm);
+
+router.post("/login", indexController.postForm);
 
 module.exports = router;

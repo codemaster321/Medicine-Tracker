@@ -6,14 +6,26 @@
     <title>Document</title>
   </head>
   <body>
-    <% if(arr.length==0) { %>
+    <% if(prods.length==0) { %>
 
     <h1>Looking for medicines!!! Not found :3</h1>
 
     
     <%  } else { %>
 
-      <%= arr[0] %>
+      <% for(let product of prods) { %>
+
+        <h1><%= product.medicine %></h1>
+
+        <h1><%= product.expiry %></h1>
+
+        <img src="<%= product.image %>"
+                                alt="not known">
+        
+
+
+       
+        <% } %>
 
         
     <% } %>
