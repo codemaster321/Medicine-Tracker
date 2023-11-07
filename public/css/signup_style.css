@@ -19,7 +19,7 @@ body {
 
   justify-self: center;
   align-self: center;
-  width: 600px; /* Adjust the width as needed */
+  /* Adjust the width as needed */
 }
 
 h2 {
@@ -38,7 +38,7 @@ label {
 
 input[type="text"],
 input[type="password"] {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   margin-top: 5px;
   border: 1px solid #ccc;

@@ -1,0 +1,28 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin: 0 20%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+
+  padding: 0 1rem;
+}
+
+.item {
+  width: 100%;
+  text-align: center;
+  padding: 5rem 0;
+  background-color: #d0ebff;
+  box-shadow: 0 12px 20px rgba(20, 101, 101, 0.1);
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  margin: 0 30%;
+}
+
+body {
+  background-color: #a5d8ff;
+}

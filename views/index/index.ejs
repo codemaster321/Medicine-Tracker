@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
+   
     <%- include('navigation.ejs') %>
+
+    <main>
+      
+    
 
     <% if(prods.length==0) { %>
 
@@ -18,12 +24,16 @@
 
       <% for(let product of prods) { %>
 
-        <h1><%= product.medicine %></h1>
+        <div class="item">
 
-        <h1><%= product.expiry %></h1>
+        <h1>Medicine Name:<%= product.medicine %></h1>
+
+        <h1>Expiry Date:<%= product.expiry.toDateString() %></h1>
 
         <img src="<%= product.image %>"
                                 alt="not known">
+
+        </div>
         
 
 
@@ -32,6 +42,9 @@
 
         
     <% } %>
+
+      
+    </main>
 
     <!-- <form action="/" method="post" enctype="multipart/form-data">
       <label for="medicine">Medicine Name</label>
