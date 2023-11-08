@@ -20,4 +20,6 @@ router.post("/signup", indexController.postSignup);
 
 router.get("/logout", indexController.postLogout);
 
+router.post("/item-delete", isAuth, indexController.deleteItem);
+
 module.exports = router;

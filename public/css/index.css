@@ -26,3 +26,43 @@ img {
 body {
   background-color: #a5d8ff;
 }
+
+.garbageIcon {
+  width: 24px;
+  height: 24px;
+  fill: #fa5252;
+}
+
+.garbageIcon:hover {
+  animation-name: tilt-shaking;
+  animation-timing-function: ease;
+  fill: green;
+}
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+form button {
+  background: none;
+  border: none;
+}
+
+form {
+  display: inline-block;
+  width: 30px;
+}

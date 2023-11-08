@@ -107,3 +107,13 @@ exports.postLogout = (req, res, next) => {
     res.redirect("/");
   });
 };
+
+exports.deleteItem = (req, res, next) => {
+  const id = req.body.productId;
+  Product.findByIdAndRemove(id)
+    .then((result) => {
+      console.log("Deleted");
+      res.redirect("/");
+    })
+    .catch((err) => console.log(err));
+};
